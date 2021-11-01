@@ -1,0 +1,147 @@
+body {background-color: #dbdad8}
+
+.cube__title {
+    text-align: center;
+    padding-bottom: 2rem;
+}
+
+.cube__title__btn {
+    padding: 4px 8px;
+    margin-left: 1rem;
+    background-color: red;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    box-shadow: 0 0 0 3px #3e3e3e, inset 0 0 0 1px rgba(0, 0, 0, 1), 0 5px 20px rgba(0, 0, 0, .5);
+    cursor: pointer;
+    transition: .5s;
+}
+.cube__title__btn:hover {box-shadow: 0 0 0 3px rgba(62, 62, 62, .5), inset 0 0 0 1px rgba(0, 0, 0, 1);}
+
+.cube__title__btn:nth-of-type(1) {margin-left: 0rem;}
+
+.cube__title__btn.active-btn {background-color: green;}
+
+.cube__title__btn i {margin-left: .3rem;}
+
+.cube__content {
+    width: 300px;
+    height: 300px;
+    margin: 6.2rem auto 0 auto;
+    perspective: 1200px;
+}
+
+.cube__boxes {
+    animation: animate-cube 12s ease-in-out infinite;
+    transform-style: preserve-3d;
+    transform-origin: 150px 150px 0;    
+}
+.cube__boxes.stop-animation {animation: none;}
+
+.cube__boxes.change-animation {animation: animate-cube2 14s ease-in-out infinite;}
+.cube__boxes.change-animation.stop-animation {animation: none;}
+
+.cube__boxes > div {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    border: 3px solid black;
+    box-shadow: 0 0 5px #ffffff, 0 0 0 5px #222222;    
+}
+
+.cube__boxes img {width: 100%;}
+
+.cube__box1 {transform: translateZ(150px);}
+.cube__box2 {transform: rotateY(90deg) translateZ(150px);}
+.cube__box3 {transform: rotateY(90deg) rotateX(90deg) translateZ(150px);}
+.cube__box4 {transform: rotateY(180deg) rotateZ(90deg) translateZ(150px);}
+.cube__box5 {transform: rotateY(-90deg) rotateZ(90deg) translateZ(150px);}
+.cube__box6 {transform: rotateX(-90deg) translateZ(150px);}
+
+.cube__boxes__title {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    width: 78px;
+    height: 29px;
+    transform: translateX(-50%);
+    color: white;
+    background-color: rgba(0, 0, 0, .5);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px 7px 0 0;
+    border: 2px solid white;
+    border-bottom: 0;
+}
+
+/* Switch between option1 and option2 */
+/* Option1 */
+@keyframes animate-cube {
+    0% {transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);}
+    16% {transform: rotateY(-90deg);}
+    35% {transform: rotateY(-90deg) rotateZ(90deg);}
+    50% {transform: rotateY(-180deg) rotateZ(90deg);}
+    66% {transform: rotateY(-270deg) rotateX(90deg);}
+    84% {transform: rotateX(90deg);}
+    100% {transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);}
+}
+
+/* Option2 */
+@keyframes animate-cube2 {
+    0% {transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);}
+    16% {transform: rotateX(90deg);}
+    28% {transform: rotateY(180deg) rotateZ(90deg)}
+    45% {transform: rotateY(270deg) rotateZ(0deg);}
+    60% {transform: rotateY(90deg) rotateX(90deg);}
+    80% {transform: rotateY(-90deg) rotateZ(90deg);}
+    100% {transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);}
+}
+
+/** Media Queries **/
+@media(max-width: 570px) {
+    .cube__content{
+        width: 230px;
+        height: 230px;
+        margin: 5rem auto 0 auto;
+    }
+    
+    .cube__boxes {transform-origin: 115px 115px 0;}
+    
+    .cube__boxes > div {
+        width: 230px;
+        height: 230px;
+    }
+    
+    .cube__box1 {transform: translateZ(115px);}
+    .cube__box2 {transform: rotateY(90deg) translateZ(115px);}
+    .cube__box3 {transform: rotateY(90deg) rotateX(90deg) translateZ(115px);}
+    .cube__box4 {transform: rotateY(180deg) rotateZ(90deg) translateZ(115px);}
+    .cube__box5 {transform: rotateY(-90deg) rotateZ(90deg) translateZ(115px);}
+    .cube__box6 {transform: rotateX(-90deg) translateZ(115px);}
+}
+
+@media(max-width: 375px) {
+    .cube__content{
+        width: 180px;
+        height: 180px;
+        margin: 4rem auto 0 auto;
+    }
+    
+    .cube__boxes {transform-origin: 90px 90px 0;}
+    
+    .cube__boxes > div {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .cube__box1 {transform: translateZ(90px);}
+    .cube__box2 {transform: rotateY(90deg) translateZ(90px);}
+    .cube__box3 {transform: rotateY(90deg) rotateX(90deg) translateZ(90px);}
+    .cube__box4 {transform: rotateY(180deg) rotateZ(90deg) translateZ(90px);}
+    .cube__box5 {transform: rotateY(-90deg) rotateZ(90deg) translateZ(90px);}
+    .cube__box6 {transform: rotateX(-90deg) translateZ(90px);}
+}
